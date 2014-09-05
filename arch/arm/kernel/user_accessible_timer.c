@@ -32,22 +32,6 @@ static int __init user_timers_vma_init(void)
 }
 arch_initcall(user_timers_vma_init);
 
-int in_user_timers_area(struct mm_struct *mm, unsigned long addr)
-{
-	return (addr >= user_timers_vma.vm_start) &&
-		(addr < user_timers_vma.vm_end);
-}
-EXPORT_SYMBOL(in_user_timers_area);
-
-struct vm_area_struct *get_user_timers_vma(struct mm_struct *mm)
-{
-	return &user_timers_vma;
-}
-EXPORT_SYMBOL(get_user_timers_vma);
-
-int get_user_timer_page(struct vm_area_struct *vma,
-	struct mm_struct *mm, unsigned long start, unsigned int gup_flags,
-	struct page **pages, int idx, int *goto_next_page)
 {
 	/* Replicates the earlier work done in mm/memory.c */
 	unsigned long pg = start & PAGE_MASK;
