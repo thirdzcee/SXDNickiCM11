@@ -1203,8 +1203,8 @@ static void __init devicemaps_init(struct machine_desc *mdesc)
 		/*
 		 * Generate a mapping for the timer page.
 		 */
-		int page_addr = get_timer_page_address();
-		if (page_addr != ARM_USER_ACCESSIBLE_TIMERS_INVALID_PAGE) {
+		int page_addr=get_timer_page_address();
+		 if (page_addr != ARM_USER_ACCESSIBLE_TIMERS_INVALID_PAGE) {
 			map.pfn = __phys_to_pfn(page_addr);
 			map.virtual = CONFIG_ARM_USER_ACCESSIBLE_TIMER_BASE;
 			map.length = PAGE_SIZE;
